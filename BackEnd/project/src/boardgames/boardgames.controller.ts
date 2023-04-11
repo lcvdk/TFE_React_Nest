@@ -1,10 +1,13 @@
-import { Controller, Get, Param, ParseIntPipe, NotFoundException, Post, ValidationPipe, Body, Put } from "@nestjs/common";
-import { BoardGameDTO } from "src/shared/DTO/boardgame.dto";
+import { Controller, Get, Param, ParseIntPipe, NotFoundException, Post, ValidationPipe, Body, Put, Delete } from "@nestjs/common";
+import { BoardGameDTO } from "src/shared/DTO/boardgame/boardgame.dto";
 import { BoardGameService } from "./boardgames.service";
-import { CreateBoardGameDTO } from "src/shared/DTO/createBoardgame.dto";
-import { BoardgameIdDTO } from "src/shared/DTO/boardgameId.dto";
+import { CreateBoardGameDTO } from "src/shared/DTO/boardgame/createBoardgame.dto";
+import { BoardgameIdDTO } from "src/shared/DTO/boardgame/boardgameId.dto";
+import { UpdateResult} from 'typeorm'
+import { UpdateBoardGameDTO } from "src/shared/DTO/boardgame/updateboardgame.dto";
+import { ApiTags } from "@nestjs/swagger/dist";
 
-
+@ApiTags("BoardGames")
 @Controller("api/boardgames")
 export class BoardGameController {
 
@@ -13,11 +16,13 @@ export class BoardGameController {
     private readonly boardGameServ : BoardGameService
   ){}
 
+// GET ALL
   @Get()
   getAll():Promise<BoardGameDTO[]>{
   return this.boardGameServ.getAll()
   }
 
+  //GET ONE
   @Get(":boardgameId")
   async getOne(
     @Param("boardgameId", ParseIntPipe) boardGameId : BoardgameIdDTO
@@ -29,6 +34,7 @@ export class BoardGameController {
       else{ return resultat }
     }
 
+//CREATE
   @Post()
     newBoardGame(
       @Body(ValidationPipe) newBoardGamed : CreateBoardGameDTO
@@ -36,12 +42,29 @@ export class BoardGameController {
       return this.boardGameServ.newBoardGame(newBoardGamed)
     } 
 
-  @Put(":boardgameId")
-    async updateBoardGame(
-      @Param("boardgameId", ParseIntPipe) boardGameId : BoardgameIdDTO,
 
+
+
+//UPDATE
+  @Put(":boardgameId")
+    updateBoardGame(
+      @Param("boardgameId", ParseIntPipe) boardGameId : BoardgameIdDTO,
+      @Body(ValidationPipe) bodyData : UpdateBoardGameDTO,
     ) : Promise<BoardGameDTO>
+    
     {
-      return
+      return this.boardGameServ.updateBoardGame(boardGameId, bodyData)
     }
+
+
+
+
+
+  @Delete(":boardgameId")
+  async deleteBoardGame(
+    @Param("boardgameId") boardGameId : BoardgameIdDTO
+  ) : Promise<UpdateResult>
+  {
+    return this.boardGameServ.deleteBoardGame(boardGameId)
+  }
 }

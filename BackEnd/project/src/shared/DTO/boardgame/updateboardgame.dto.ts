@@ -6,37 +6,37 @@ export class UpdateBoardGameDTO{
   @IsDefined()
   @MaxLength(100)
   @MinLength(2)
-  boardgame_title: string
+  newBoardgame_title: string
 
   @IsString()
   @MaxLength(200)
   @MinLength(0)
-  boardgame_subtitle: string
+  newBoardgame_subtitle: string
   
   @IsString()
   @IsDefined()
   @MaxLength(100)
   @MinLength(2)
-  boardgame_genre: string
+  newBoardgame_genre: string
 
   @IsString()
   @IsDefined()
   @MaxLength(100)
   @MinLength(2)
-  boardgame_difficulty: string
+  newBoardgame_difficulty: string
 
 
   @IsNumber()
   @IsDefined()
-  boardgame_playtime: number
+  newBoardgame_playtime: number
 
   @IsNumber()
   @IsDefined()
-  boardgame_maxPlayers: number
+  newBoardgame_maxPlayers: number
   
   @IsString()
   @IsDefined()
   @MaxLength(500)
   @MinLength(2)
-  boardgame_synopsis: string
+  newBoardgame_synopsis: string
 }

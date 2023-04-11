@@ -1,10 +1,11 @@
 import { Injectable, InternalServerErrorException, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { BoardGameDTO } from "src/shared/DTO/boardgame.dto";
-import { BoardgameIdDTO } from "src/shared/DTO/boardgameId.dto";
-import { CreateBoardGameDTO } from "src/shared/DTO/createBoardgame.dto";
+import { BoardGameDTO } from "src/shared/DTO/boardgame/boardgame.dto";
+import { BoardgameIdDTO } from "src/shared/DTO/boardgame/boardgameId.dto";
+import { CreateBoardGameDTO } from "src/shared/DTO/boardgame/createBoardgame.dto";
+import { UpdateBoardGameDTO } from "src/shared/DTO/boardgame/updateboardgame.dto";
 import { BoardGamesEntity } from "src/shared/entities/boardgames.entity";
-import { Repository } from "typeorm"
+import { Repository,UpdateResult } from "typeorm"
 
 @Injectable()
 export class BoardGameService{
@@ -37,5 +38,22 @@ export class BoardGameService{
       return newBoardGamedCreated
     }
       else { throw new InternalServerErrorException("Erreur Service : boardgame already exists")} 
+  }
+
+  async updateBoardGame(boardGameId : BoardgameIdDTO, bodyData : UpdateBoardGameDTO) : Promise<BoardGameDTO>
+  {
+    let foundBoardgame : BoardGamesEntity = await this.boardGameRepo.findOneBy({boardgame_id : boardGameId})
+    if(!foundBoardgame) throw new NotFoundException(`Boardgame with the ID ${boardGameId} not found`)
+
+    foundBoardgame = Object.assign(foundBoardgame, bodyData) //compare les deux, et mets les champs en commun, prend les infos du 2e paramètres, et garde les valeurs similaires
+  
+    let result = await this.boardGameRepo.save(foundBoardgame)
+    
+    return result
+  }
+
+  async deleteBoardGame(boardGameId : BoardgameIdDTO) : Promise<UpdateResult>
+  {
+    return await this.boardGameRepo.softDelete(boardGameId)
   }
 }
