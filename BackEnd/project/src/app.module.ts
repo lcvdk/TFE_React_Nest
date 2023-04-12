@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardGameModule } from './boardgames/boardgames.module';
 import { PlayerModule } from './players/players.module';
+import { GameModeModule } from './gamemodes/gamemode.module';
 
 
 @Module({
@@ -20,7 +21,7 @@ import { PlayerModule } from './players/players.module';
       trustServerCertificate : true
     }
   }),
-  BoardGameModule, PlayerModule
+  BoardGameModule, PlayerModule, GameModeModule
   ],
   controllers: [],
   providers: []

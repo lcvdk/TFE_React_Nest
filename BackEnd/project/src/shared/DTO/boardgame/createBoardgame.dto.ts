@@ -1,4 +1,4 @@
-import { IsNumber, IsDefined, IsString, MaxLength, MinLength } from "class-validator"
+import { IsNumber, IsDefined, IsString, MaxLength, MinLength, IsObject } from "class-validator"
 
 export class CreateBoardGameDTO{
   
@@ -39,4 +39,6 @@ export class CreateBoardGameDTO{
   @MaxLength(500)
   @MinLength(2)
   boardgame_synopsis: string
+
+  
 }

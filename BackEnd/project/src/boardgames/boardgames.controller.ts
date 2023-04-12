@@ -58,7 +58,7 @@ export class BoardGameController {
 
 
 
-
+// DELETE
 
   @Delete(":boardgameId")
   async deleteBoardGame(

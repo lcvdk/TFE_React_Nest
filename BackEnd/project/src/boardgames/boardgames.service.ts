@@ -14,11 +14,14 @@ export class BoardGameService{
     @InjectRepository(BoardGamesEntity) private boardGameRepo : Repository<BoardGamesEntity>
   ){}
 
+
+  
+  // GET ALL
     async getAll() : Promise<BoardGameDTO[]>{ // promesse renvoit un tableau de DTO
       let allBoardGames : BoardGameDTO[] = await this.boardGameRepo.find() // le tableau de DTO
       return allBoardGames
     }
-
+  // GET ONE
     async getOne(boardGameId : BoardgameIdDTO) : Promise<BoardGameDTO>{
       let oneBoardGame : BoardGameDTO = await this.boardGameRepo.findOneOrFail({ where :{ boardgame_id : boardGameId}})
     .catch((error) => { throw new NotFoundException(`##### Sorry the boardgame with the id ${boardGameId} is not found #####`)}) 
@@ -40,6 +43,7 @@ export class BoardGameService{
       else { throw new InternalServerErrorException("Erreur Service : boardgame already exists")} 
   }
 
+  // UPDATE
   async updateBoardGame(boardGameId : BoardgameIdDTO, bodyData : UpdateBoardGameDTO) : Promise<BoardGameDTO>
   {
     let foundBoardgame : BoardGamesEntity = await this.boardGameRepo.findOneBy({boardgame_id : boardGameId})
@@ -52,6 +56,7 @@ export class BoardGameService{
     return result
   }
 
+  //DELETE
   async deleteBoardGame(boardGameId : BoardgameIdDTO) : Promise<UpdateResult>
   {
     return await this.boardGameRepo.softDelete(boardGameId)

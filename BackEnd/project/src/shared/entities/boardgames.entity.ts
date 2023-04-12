@@ -25,6 +25,7 @@ export class BoardGamesEntity{
 
   @Column({length : 500, nullable : false, default : "N/C"})
   boardgame_synopsis: string
+
 }
 
 

@@ -1,4 +1,4 @@
-import { IsDefined, IsNumber, IsString, MaxLength, MinLength } from "class-validator"
+import { IsDefined, IsNumber, IsObject, IsString, MaxLength, MinLength } from "class-validator"
 
 export class UpdateBoardGameDTO{
 
@@ -39,4 +39,10 @@ export class UpdateBoardGameDTO{
   @MaxLength(500)
   @MinLength(2)
   newBoardgame_synopsis: string
+
+
+  
+
+
+
 }
