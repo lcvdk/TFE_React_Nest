@@ -5,7 +5,7 @@ import { CreateBoardGameDTO } from "src/shared/DTO/boardgame/createBoardgame.dto
 import { BoardgameIdDTO } from "src/shared/DTO/boardgame/boardgameId.dto";
 import { UpdateResult} from 'typeorm'
 import { UpdateBoardGameDTO } from "src/shared/DTO/boardgame/updateboardgame.dto";
-import { ApiTags } from "@nestjs/swagger/dist";
+import { ApiOperation, ApiTags } from "@nestjs/swagger/dist";
 
 @ApiTags("BoardGames")
 @Controller("api/boardgames")
@@ -17,12 +17,15 @@ export class BoardGameController {
   ){}
 
 // GET ALL
+  @ApiOperation({ summary : "Récupère TOUS les Jeux"})
   @Get()
   getAll():Promise<BoardGameDTO[]>{
   return this.boardGameServ.getAll()
-  }
+}
 
-  //GET ONE
+//GET ONE
+
+  @ApiOperation({ summary : "Récupère UN Jeu"})
   @Get(":boardgameId")
   async getOne(
     @Param("boardgameId", ParseIntPipe) boardGameId : BoardgameIdDTO
@@ -35,6 +38,7 @@ export class BoardGameController {
     }
 
 //CREATE
+  @ApiOperation({ summary : "Crée un Jeu"})
   @Post()
     newBoardGame(
       @Body(ValidationPipe) newBoardGamed : CreateBoardGameDTO
@@ -46,6 +50,7 @@ export class BoardGameController {
 
 
 //UPDATE
+  @ApiOperation({ summary : "Mise à Jour d'un jeu"})
   @Put(":boardgameId")
     updateBoardGame(
       @Param("boardgameId", ParseIntPipe) boardGameId : BoardgameIdDTO,
@@ -59,7 +64,7 @@ export class BoardGameController {
 
 
 // DELETE
-
+  @ApiOperation({ summary : "Efface un jeu (SoftDelete)"})
   @Delete(":boardgameId")
   async deleteBoardGame(
     @Param("boardgameId") boardGameId : BoardgameIdDTO
