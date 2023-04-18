@@ -1,13 +1,21 @@
 import { Button, Form, Container, Row, Col } from 'react-bootstrap' // import B's Components
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from 'react-router-dom'
 
 const LoginUser = () => {
+
+  const navigate = useNavigate()
+const handleSubmit = (e) => {
+ e.preventDefault()
+ //axios.post("http://localhost:5000/...", {body}
+ navigate(-1) //retourne à la page précédente par rapport a la page login
+}
 
 
 return(
   <>
     <Container fluid>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Row>
             <Col md>
             <Form.Group controlId='formEmail'>
