@@ -10,10 +10,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Container>
-        {/* <a className="navbar-brand" href="#"> */}
-          
           <NavLink to=''><img src={myLogo} alt="logo" /></NavLink>
-        {/* </a> */}
         <button
           className="navbar-toggler"
           type="button"
@@ -31,21 +28,16 @@ const Navbar = () => {
           <ul className="navbar-nav ml-auto">
             
             <li className="nav-item">
-              {/* <a className="nav-link" href="#"> */}
                 <NavLink className="nav-link text-primary"  to='/boardgames'>Boardgames</NavLink>
-              {/* </a> */}
             </li>
 
             <li className="nav-item">
-              {/* <a className="nav-link" href="#"> */}
                 <NavLink className="nav-link text-primary" to='/players'>Players</NavLink>
-              {/* </a> */}
             </li>
 
             <li className="nav-item">
-              {/* <a className="nav-link" href="#"> */}
                 <NavLink className="nav-link text-primary" to='/contact'>Contact</NavLink>
-              {/* </a> */}
+              
             </li>
           
           </ul>

@@ -6,6 +6,7 @@ import NotFound from "../pages/errors/not-found-page";
 import HomePage from "../pages/home/home-page";
 import PlayersPage from "../pages/players/players-page";
 import LoginUser from "../components/user/registred/loginuser";
+import Boardgames from "../components/boardgames/boargames";
 
 const appRoutes = [
   {
@@ -32,8 +33,6 @@ const appRoutes = [
         index: true,
         element: <ChooseGame/>
       }
-      
-      
         
       ]
   },

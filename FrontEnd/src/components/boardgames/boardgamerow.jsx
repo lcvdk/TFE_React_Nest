@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // import style from './boardgamerow.module.css'
-import { Card } from 'react-bootstrap' // import B's Components
+import { Card, Col } from 'react-bootstrap' // import B's Components
  
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -17,20 +17,21 @@ const BoardGameRow = (props) =>{
 return(
   
     <li>
-        <Card className="mb-3">
-          <Card.Img src='https://picsum.photos/200/80'/>
+        <Col>
+        <Card className="md-3 p-3 m-2" style={{ width: '18rem' }} >
+          <Card.Img src='https://picsum.photos/100/30'/>
           <Card.Body>
             <div  onClick={HandlerSelectedgame}>
               <Card.Title>
                 <h2>{props.boardgame_title}</h2>
               </Card.Title>
               <Card.Text>
-                {/* {value} */}
-                {props.boardgame_synopsis}
+                {props.boardgame_genre}
               </Card.Text>  
             </div>
           </Card.Body>
         </Card>
+        </Col>
     </li>
   
 )
