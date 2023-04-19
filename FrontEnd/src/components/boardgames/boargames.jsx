@@ -3,7 +3,7 @@ import axios from 'axios'
 import { nanoid } from 'nanoid'
 import BoardGameRow from "./boardgamerow"
 import style from './boardgame.module.css'
-import { Card, CardGroup, Col, Row } from "react-bootstrap"
+import { Card, CardGroup, Col, Container, Row, Stack } from "react-bootstrap"
 //model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 const Boardgames = () => {
@@ -27,10 +27,11 @@ const Boardgames = () => {
   )
   // le gameMap est affiché à l'aide de {gamesMap}
   return (
+    <Stack direction="horizontal" className="flex-wrap mx-auto" style={{justifyContent: "center"}}>
     
-        <ul>
           {gamesMap} 
-        </ul>
+    
+    </Stack>
   )
 }
 

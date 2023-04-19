@@ -3,9 +3,10 @@ import { useState } from 'react'
 import { Card, Col } from 'react-bootstrap' // import B's Components
  
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { useNavigate } from 'react-router-dom'
 
 const BoardGameRow = (props) =>{
-  
+  const navigate = useNavigate()
   const [value, setValue] = useState()
 
 
@@ -13,26 +14,30 @@ const BoardGameRow = (props) =>{
     setValue("vous avez choisi " + e.target.innerText)
   }
 
-
+const handleSelect = ()=>{
+  // navigate('/contact')
+  console.log("handleSelect");
+}
 return(
   
-    <li>
-        <Col>
-        <Card className="md-3 p-3 m-2" style={{ width: '18rem' }} >
+    
+        
+        <Card className="md-3 p-3 m-2" onClick={handleSelect} style={{ width: '18rem' } }>
           <Card.Img src='https://picsum.photos/100/30'/>
           <Card.Body>
-            <div  onClick={HandlerSelectedgame}>
+            
               <Card.Title>
-                <h2>{props.boardgame_title}</h2>
+                {props.boardgame_title}
               </Card.Title>
               <Card.Text>
                 {props.boardgame_genre}
+                {value}
               </Card.Text>  
-            </div>
+            
           </Card.Body>
         </Card>
-        </Col>
-    </li>
+        
+    
   
 )
 

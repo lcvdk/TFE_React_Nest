@@ -32,8 +32,11 @@ const appRoutes = [
       {
         index: true,
         element: <ChooseGame/>
+      },
+      { 
+        path: ':boardgame_id',
+        element: <OneBoardGamePage/>
       }
-        
       ]
   },
   {

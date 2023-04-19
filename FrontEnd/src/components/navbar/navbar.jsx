@@ -25,7 +25,7 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           
-          <ul className="navbar-nav ml-auto">
+          <ul className="navbar-nav ">
             
             <li className="nav-item">
                 <NavLink className="nav-link text-primary"  to='/boardgames'>Boardgames</NavLink>
