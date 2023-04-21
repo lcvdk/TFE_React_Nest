@@ -16,8 +16,9 @@ const Boardgames = () => {
     })
   },[])
 
-  const gamesMap = games.map((game)=> // prends la response [] et fait une boucle sur chaque élément
-     // pour chaque élément il fait un <li></li> contenant un key et un contenu dynamique.
+  const gamesMap = games.map((game)=> 
+  // prends la response [] et fait une boucle sur chaque élément
+  // pour chaque élément il fait un <li></li> contenant un key et un contenu dynamique.
         
           
             <BoardGameRow key={game.id=nanoid()} {...game}/>

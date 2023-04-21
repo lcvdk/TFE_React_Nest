@@ -1,12 +1,15 @@
 import BoardGamePage from "../pages/boardgames/boardgame-page";
 import ContactPage from "../pages/contact/contact-page";
-import ChooseGame from "../pages/creategame/pages/choosegame/choosegame-page";
 import CreateGamePage from "../pages/creategame/creategame-page";
 import NotFound from "../pages/errors/not-found-page";
 import HomePage from "../pages/home/home-page";
 import PlayersPage from "../pages/players/players-page";
 import LoginUser from "../components/user/registred/loginuser";
-import Boardgames from "../components/boardgames/boargames";
+import OneBoardGamePage from "../pages/boardgames/oneboardgame-page";
+import ChooseGamePage from "../pages/creategame/pages/choosegame/choosegame-page";
+import MeteoPage from "../pages/meteo/meteo-page";
+import PlayerIndexPage from "../pages/players/playersIndex-page";
+import PlayerDetailPage from "../pages/players/playersDetail.page";
 
 const appRoutes = [
   {
@@ -19,11 +22,26 @@ const appRoutes = [
   },
   {
     path:'players',
-    element: <PlayersPage/>
+    element: <PlayersPage/>,
+    children: [
+      {
+        index: true,
+        element: <PlayerIndexPage/>
+      },
+      {
+        path: ':playerId',
+        element: <PlayerDetailPage/>
+      }
+    ]
+    
   },
   {
     path:'contact',
     element: <ContactPage/>
+  },
+  {
+    path:'meteo',
+    element: <MeteoPage/>
   },
   {
     path: 'creategame',
@@ -31,7 +49,7 @@ const appRoutes = [
     children: [
       {
         index: true,
-        element: <ChooseGame/>
+        element: <ChooseGamePage/>
       },
       { 
         path: ':boardgame_id',
