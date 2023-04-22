@@ -1,15 +1,31 @@
-import BoardGamePage from "../pages/boardgames/boardgame-page";
-import ContactPage from "../pages/contact/contact-page";
-import CreateGamePage from "../pages/creategame/creategame-page";
-import NotFound from "../pages/errors/not-found-page";
-import HomePage from "../pages/home/home-page";
-import PlayersPage from "../pages/players/players-page";
-import LoginUser from "../components/user/registred/loginuser";
-import OneBoardGamePage from "../pages/boardgames/oneboardgame-page";
-import ChooseGamePage from "../pages/creategame/pages/choosegame/choosegame-page";
-import MeteoPage from "../pages/meteo/meteo-page";
-import PlayerIndexPage from "../pages/players/playersIndex-page";
+//BOARDGAMES
+import BoardGamePage from "../pages/boardgames/boardgames.page";
+import BoardGameDetailPage from "../pages/boardgames/boardgamesDetail.page";
+import BoardGamesIndexPage from "../pages/boardgames/boardgamesIndex.page";
+
+//CONTACT
+import ContactPage from "../pages/contact/contact.page";
+
+//CREATE GAME
+import CreateGamePage from "../pages/creategame/creategame.page";
+
+//NOT FOUND
+import NotFound from "../pages/errors/not-found.page";
+
+//HOME
+import HomePage from "../pages/home/home.page";
+
+//METEO
+import MeteoPage from "../pages/meteo/meteo.page";
+
+//PLAYERS
+import PlayersPage from "../pages/players/players.page";
 import PlayerDetailPage from "../pages/players/playersDetail.page";
+import PlayerIndexPage from "../pages/players/playersIndex.page";
+
+//USER
+import LoginUser from "../components/user/registred/loginuser";
+
 
 const appRoutes = [
   {
@@ -18,7 +34,17 @@ const appRoutes = [
   },
   {
     path:'boardgames',
-    element: <BoardGamePage/>
+    element: <BoardGamePage/>,
+    children : [
+      {
+        index: true,
+        element: <BoardGamesIndexPage/> 
+      },
+      {
+        path: ':boardgameId',
+        element: <BoardGameDetailPage/>
+      }
+    ]
   },
   {
     path:'players',
@@ -43,20 +69,20 @@ const appRoutes = [
     path:'meteo',
     element: <MeteoPage/>
   },
-  {
-    path: 'creategame',
-    element: <CreateGamePage/>,
-    children: [
-      {
-        index: true,
-        element: <ChooseGamePage/>
-      },
-      { 
-        path: ':boardgame_id',
-        element: <OneBoardGamePage/>
-      }
-      ]
-  },
+  // {
+  //   path: 'creategame',
+  //   element: <CreateGamePage/>,
+  //   children: [
+  //     {
+  //       index: true,
+  //       element: <ChooseGamePage/>
+  //     },
+  //     { 
+  //       path: ':boardgame_id',
+  //       element: <OneBoardGamePage/>
+  //     }
+  //     ]
+  // },
   {
     path: 'login',
     element: <LoginUser/>

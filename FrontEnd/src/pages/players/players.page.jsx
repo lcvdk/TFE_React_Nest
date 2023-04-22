@@ -12,4 +12,4 @@ const PlayersPage = () => {
   )
 }
 
-export default PlayersPage
+export default PlayersPage;

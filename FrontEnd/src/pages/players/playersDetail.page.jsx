@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios"
@@ -19,11 +17,7 @@ const PlayerDetailPage = () => {
     .then((res) => {  // response
       setPlayer(res.data) // setGames change games avec les datas de la response
     })
-
-    
-    
-
-  },[])
+ },[])
   
   
     
@@ -31,8 +25,7 @@ const PlayerDetailPage = () => {
 
 return(
   <>
-    <h4>player's detail page</h4>
-    <PlayerDetail  {...player}/>
+        <PlayerDetail  {...player}/>
   </>
 )
 

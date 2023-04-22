@@ -1,9 +1,11 @@
+import { Card } from "react-bootstrap";
+
 const PlayerDetail = ({ player_id, player_pseudo, player_email }) => (
-  <div>
-      <p>{player_id}</p>
-      <p>{player_pseudo}</p>
+  <Card className="p-2">
+      <p>Players ID: {player_id}</p>
+      <h3>{player_pseudo}</h3>
       <p>{player_email}</p>
-  </div>
+  </Card>
 );
 
 export default PlayerDetail;
