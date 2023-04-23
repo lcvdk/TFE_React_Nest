@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import axios from 'axios'
 import { nanoid } from 'nanoid'
 import BoardGameRow from "./boardgamerow"
-import style from './boardgame.module.css'
-import { Card, CardGroup, Col, Container, Row, Stack } from "react-bootstrap"
+import {  Stack } from "react-bootstrap"
 //model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 const Boardgames = () => {
@@ -19,12 +18,7 @@ const Boardgames = () => {
   const gamesMap = games.map((game)=> 
   // prends la response [] et fait une boucle sur chaque élément
   // pour chaque élément il fait un <li></li> contenant un key et un contenu dynamique.
-        
-          
             <BoardGameRow key={game.id=nanoid()} {...game}/>
-        
-        
-        
   )
   // le gameMap est affiché à l'aide de {gamesMap}
   return (
@@ -35,5 +29,4 @@ const Boardgames = () => {
     </Stack>
   )
 }
-
 export default Boardgames

@@ -7,7 +7,9 @@ import BoardGamesIndexPage from "../pages/boardgames/boardgamesIndex.page";
 import ContactPage from "../pages/contact/contact.page";
 
 //CREATE GAME
-import CreateGamePage from "../pages/creategame/creategame.page";
+import CreateGamePage from '../pages/creategame/creategame.page'
+import ChooseGamePage from "../pages/creategame/pages/choosegame/choosegame-page";
+import ChooseGameMode from "../pages/creategame/pages/choosemode/choosemode.page";
 
 //NOT FOUND
 import NotFound from "../pages/errors/not-found.page";
@@ -25,6 +27,7 @@ import PlayerIndexPage from "../pages/players/playersIndex.page";
 
 //USER
 import LoginUser from "../components/user/registred/loginuser";
+
 
 
 const appRoutes = [
@@ -69,20 +72,27 @@ const appRoutes = [
     path:'meteo',
     element: <MeteoPage/>
   },
-  // {
-  //   path: 'creategame',
-  //   element: <CreateGamePage/>,
-  //   children: [
-  //     {
-  //       index: true,
-  //       element: <ChooseGamePage/>
-  //     },
-  //     { 
-  //       path: ':boardgame_id',
-  //       element: <OneBoardGamePage/>
-  //     }
-  //     ]
-  // },
+  {
+    path: 'creategame',
+    element: <CreateGamePage/>,
+    children: [
+      {
+        index: true,
+        element: <ChooseGamePage/>
+      },
+      {
+        index: true,
+        element: <ChooseGameMode/>
+
+      },
+
+
+      // { 
+      //   path: ':boardgame_id',
+      //   element: <OneBoardGamePage/>
+      // }
+      ]
+  },
   {
     path: 'login',
     element: <LoginUser/>

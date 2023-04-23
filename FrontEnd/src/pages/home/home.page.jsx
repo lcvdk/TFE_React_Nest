@@ -10,8 +10,8 @@ const HomePage = () => {
 
   return (
     <>
-      <Container>
-        <Card className="p-3 m-2 text-center">
+      <Container className="pt-5">
+        <Card className="p-3  m-2 text-center">
           <Card.Title>Bienvenue sur Board Game Tournament!</Card.Title>
           <Card.Text>This is the Home Page</Card.Text>
                     
