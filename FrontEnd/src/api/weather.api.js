@@ -5,6 +5,8 @@ export const weatherFetcher = (city) => {
 
     const params = {
         q: city, units: 'metric', lang: 'fr', appid: process.env.REACT_APP_WEATHER_KEY
+        
+        
     };
 
     return axios.get('https://api.openweathermap.org/data/2.5/weather', { params }).then(({data}) => ({

@@ -1,33 +1,36 @@
 import { Button, Card, Container } from "react-bootstrap";
 import ChooseGameMode from "../choosemode/choosemode.page";
 import ChoosePlayerPage from "../chooseplayer/chooseplayer-page";
-import Bouton from "../../../../components/boutons/bouton";
-import Boardgames from "../../../../components/boardgames/boardgames";
 import { useState } from "react";
-import BoardGamesIndexPage from "../../../boardgames/boardgamesIndex.page";
+import CreaBoardGamesIndexPage from "./crea-boardgamesIndex.page";
 
 
 
 const ChooseGamePage = () => {
   
-  const [showAllGames, setShowAllGames] = useState(true)
-  const [selectedGame, setSelectedGame] = useState("")
-
+  const [showAllGames, setShowAllGames] = useState(false)
+  const [titleSelectedGame, setTitleSelectedGame] = useState("")
+  
+  
   const handleClickShowAllGames = () => {
       setShowAllGames(showAllGames => !showAllGames)
     }
-  const handleSelectedGame = () => {
-    setSelectedGame(selectedGame)
+  const handleTitleSelectedGame = (title) => {
+    setTitleSelectedGame(title)
   }
+
+  
+
+
 
   return (
     <>
       <Container fluid="true" >
         <Card className="m-1 p-3 d-flex" style={{justifyContent: "center"}}>
           <Card.Title>Choose Your Game</Card.Title>
-          <Card.Subtitle>{selectedGame}</Card.Subtitle>
+          <Card.Subtitle>{titleSelectedGame}</Card.Subtitle>
           <Container className="pt-3">
-          {showAllGames && <BoardGamesIndexPage handleselectedgame={handleSelectedGame}/>}
+          {showAllGames && <CreaBoardGamesIndexPage handleTitleSelectedGame={handleTitleSelectedGame}  />}
           
           <Button type="submit" className="btn-success btn-sm mt-3" onClick={handleClickShowAllGames}>All Games</Button>
           
