@@ -5,11 +5,7 @@ import CreaBoardgamesList from "../../../../components/crea-boardgames/crea-boar
 
 const CreaBoardGamesIndexPage = (props) =>{
 
-  const navigate = useNavigate()
   const [boardgames, setBoardgames] = useState([])// attention on renvoit un tableau []
-
-
-
 
   useEffect(() => {
     axios.get("http://localhost:5000/api/boardgames")
@@ -19,13 +15,10 @@ const CreaBoardGamesIndexPage = (props) =>{
   },[])
 
   
-  
-
-
     return (
       <>
           <h4>This is the Boardgames Index Page</h4>
-          <CreaBoardgamesList data={boardgames} handleTitleSelectedGame={props.handleTitleSelectedGame}/>
+          <CreaBoardgamesList data={boardgames} handleTitleSelectedGame={props.handleTitleSelectedGame} handleClickShowAllGames={props.handleClickShowAllGames}/>
       </>
     )
 

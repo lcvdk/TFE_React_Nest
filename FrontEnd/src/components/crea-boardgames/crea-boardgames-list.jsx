@@ -4,15 +4,8 @@ import CreaBoardGameDetailPage from "../../pages/creategame/pages/choosegame/cre
 
 // onSelectedBoardgame
 
-const CreaBoardgamesList = ({ data, handleTitleSelectedGame }) => {
-  const [boardgame, setBoardgame] = useState("");
-  const [gameId, setGameId] = useState(null);
+const CreaBoardgamesList = ({ data, handleTitleSelectedGame, handleClickShowAllGames }) => {
 
-  // const onSelectedBoardgame = () => {
-  //setSelectedGameId(selectedGameId => boardgame.boardgame_id)
-
-  // }
-  console.log(data);
   return (
     <Table>
       <thead>
@@ -25,7 +18,12 @@ const CreaBoardgamesList = ({ data, handleTitleSelectedGame }) => {
       </thead>
       <tbody>
         {data.map((boardgame) => (
-          <RowTable key={boardgame.boardgame_id} boardgame={boardgame} handleTitleSelectedGame={handleTitleSelectedGame}/>
+          <RowTable 
+            key={boardgame.boardgame_id} 
+            boardgame={boardgame} 
+            handleTitleSelectedGame={handleTitleSelectedGame} 
+            handleClickShowAllGames={handleClickShowAllGames}
+          />
         ))}
       </tbody>
     </Table>
@@ -33,7 +31,7 @@ const CreaBoardgamesList = ({ data, handleTitleSelectedGame }) => {
 };
 export default CreaBoardgamesList;
 
-const RowTable = ({ boardgame, handleTitleSelectedGame }) => {
+const RowTable = ({ boardgame, handleTitleSelectedGame, handleClickShowAllGames }) => {
   const [moreInfo, setMoreInfo] = useState(false);
   
   const handleMoreInfo = () => {
@@ -41,10 +39,8 @@ const RowTable = ({ boardgame, handleTitleSelectedGame }) => {
   };
   
   const onSelectedBoardgame = (id, title) => {
-    console.log("click me" + id);
-    console.log(title );
-    handleTitleSelectedGame(title)
-
+    handleTitleSelectedGame(title,id)
+    handleClickShowAllGames()
   }
 
 
@@ -52,25 +48,25 @@ const RowTable = ({ boardgame, handleTitleSelectedGame }) => {
   return (
     <>
       <tr className="p-2">
-        <th>{boardgame.boardgame_id}</th>
-        <th>{boardgame.boardgame_title}</th>
-        <th>{boardgame.boardgame_subtitle}</th>
-        <th>
+        <td>{boardgame.boardgame_id}</td>
+        <td>{boardgame.boardgame_title}</td>
+        <td>{boardgame.boardgame_subtitle}</td>
+        <td>
           <button
             className="btn btn-sm btn-info"
             onClick={() => handleMoreInfo(boardgame.boardgame_id)}
           >
             More info
           </button>
-        </th>
-        <th>
+        </td>
+        <td>
           <button
             className="btn btn-sm btn-success"
             onClick={() => onSelectedBoardgame(boardgame.boardgame_id, boardgame.boardgame_title)}
           >
             validation
           </button>
-        </th>
+        </td>
       </tr>
 
       {moreInfo && (

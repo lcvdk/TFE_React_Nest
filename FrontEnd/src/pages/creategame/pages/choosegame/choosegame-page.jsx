@@ -9,16 +9,24 @@ import CreaBoardGamesIndexPage from "./crea-boardgamesIndex.page";
 const ChooseGamePage = () => {
   
   const [showAllGames, setShowAllGames] = useState(false)
+  const [showAllPlayers, setShowAllPlayers] = useState(false)
   const [titleSelectedGame, setTitleSelectedGame] = useState("")
+  const [idSelectedGame, setIdSelectedGame] = useState(null)
   
   
   const handleClickShowAllGames = () => {
       setShowAllGames(showAllGames => !showAllGames)
     }
-  const handleTitleSelectedGame = (title) => {
+  const handleTitleSelectedGame = (title, id) => {
     setTitleSelectedGame(title)
+    setIdSelectedGame(id)
+    console.log(id)
   }
 
+
+  const handleClickShowAllPlayers = () => {
+    setShowAllPlayers(showAllPlayers => !showAllPlayers)
+  }
   
 
 
@@ -28,11 +36,16 @@ const ChooseGamePage = () => {
       <Container fluid="true" >
         <Card className="m-1 p-3 d-flex" style={{justifyContent: "center"}}>
           <Card.Title>Choose Your Game</Card.Title>
-          <Card.Subtitle>{titleSelectedGame}</Card.Subtitle>
+          <Card.Subtitle><h2>{titleSelectedGame}</h2></Card.Subtitle>
           <Container className="pt-3">
-          {showAllGames && <CreaBoardGamesIndexPage handleTitleSelectedGame={handleTitleSelectedGame}  />}
+          {showAllGames && <CreaBoardGamesIndexPage handleTitleSelectedGame={handleTitleSelectedGame} handleClickShowAllGames={handleClickShowAllGames}   />}
           
-          <Button type="submit" className="btn-success btn-sm mt-3" onClick={handleClickShowAllGames}>All Games</Button>
+          <Button 
+            type="submit" 
+            className="btn-success btn-sm mt-3" 
+            onClick={handleClickShowAllGames}
+            >{!showAllGames? "Show all Games" : "Hide all games"}
+          </Button>
           
           
           </Container>
@@ -41,11 +54,11 @@ const ChooseGamePage = () => {
       </Container>
       
       <Container fluid="true" >  
-      <ChooseGameMode/>
+      <ChooseGameMode gameSelected={idSelectedGame} />
       </Container>
 
       <Container fluid="true" >  
-      <ChoosePlayerPage/>
+      <ChoosePlayerPage handleClickShowAllPlayers={handleClickShowAllPlayers} showAllPlayers={showAllPlayers}/>
       </Container>
     </>
   );
