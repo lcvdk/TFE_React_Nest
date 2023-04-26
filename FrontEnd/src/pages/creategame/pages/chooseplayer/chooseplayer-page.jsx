@@ -8,11 +8,17 @@ const ChoosePlayerPage = (props) => {
 
   const [createPlayerForm, setCreatePlayerForm] = useState(false)
 
+  
+  // numberPlayers={props.numberPlayers}
+
   const handlecreatePlayerForm = () => {
     setCreatePlayerForm(!createPlayerForm)
-    console.log(createPlayerForm)
+    
   }
 
+  // function NewArray(props.numberPlayers){
+
+  // }
 
   return (
     <Container fluid="true">
@@ -20,7 +26,12 @@ const ChoosePlayerPage = (props) => {
         <Card.Title>Choose Player Page</Card.Title>
         <Card.Subtitle>this is the choose your PLAYER Page</Card.Subtitle>
         <Container>
-          {props.showAllPlayers && <ChoosePlayerIndexPage />}
+          {
+            props.numberPlayers &&  "yo"
+          }
+        </Container>
+        <Container>
+          {props.showAllPlayers && <ChoosePlayerIndexPage handleSelectPlayers={props.handleSelectPlayers} />}
           {createPlayerForm && <CreaNewPlayerForm/>}
           <Button
             type="submit"

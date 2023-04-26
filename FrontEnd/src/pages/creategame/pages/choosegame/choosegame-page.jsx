@@ -1,4 +1,4 @@
-import { Button, Card, Container } from "react-bootstrap";
+import { Button, Card, Container, Row } from "react-bootstrap";
 import ChooseGameMode from "../choosemode/choosemode.page";
 import ChoosePlayerPage from "../chooseplayer/chooseplayer-page";
 import { useState } from "react";
@@ -12,6 +12,10 @@ const ChooseGamePage = () => {
   const [showAllPlayers, setShowAllPlayers] = useState(false)
   const [titleSelectedGame, setTitleSelectedGame] = useState("")
   const [idSelectedGame, setIdSelectedGame] = useState(null)
+  const [numberPlayers, setNumberPlayers] = useState(null)
+  const [errorTable, setErrorTable] = useState(false)
+ 
+  const playerArray = []
   
   
   const handleClickShowAllGames = () => {
@@ -28,7 +32,32 @@ const ChooseGamePage = () => {
     setShowAllPlayers(showAllPlayers => !showAllPlayers)
   }
   
+  const handleSelectNumberPlayer = (value) => {
+    console.log("value players " + value)
+    setNumberPlayers(numberPlayers => value)
+  }
 
+  const handleSelectPlayers = (playerId,playerPseudo) => {
+    
+    if (playerArray.length < numberPlayers){
+      
+      if (playerArray.includes(playerPseudo)) {
+        setErrorTable(true)
+      }
+      
+      else {
+        playerArray.push(playerPseudo)
+        console.log(`${playerPseudo} est validé`)
+      }
+      
+    }
+    else {
+      setErrorTable(true)
+    } 
+    
+    console.log(playerArray)
+
+  }
 
 
   return (
@@ -36,10 +65,16 @@ const ChooseGamePage = () => {
       <Container fluid="true" >
         <Card className="m-1 p-3 d-flex" style={{justifyContent: "center"}}>
           <Card.Title>Choose Your Game</Card.Title>
-          <Card.Subtitle><h2>{titleSelectedGame}</h2></Card.Subtitle>
+          <Card.Subtitle className="text-success"><h2>{titleSelectedGame}</h2></Card.Subtitle>
           <Container className="pt-3">
-          {showAllGames && <CreaBoardGamesIndexPage handleTitleSelectedGame={handleTitleSelectedGame} handleClickShowAllGames={handleClickShowAllGames}   />}
-          
+            {numberPlayers && `Number of players: ${numberPlayers}` }
+          <Row>
+            {showAllGames && <CreaBoardGamesIndexPage 
+                  handleTitleSelectedGame={handleTitleSelectedGame} 
+                  handleClickShowAllGames={handleClickShowAllGames}   
+                  />
+            }
+          </Row>
           <Button 
             type="submit" 
             className="btn-success btn-sm mt-3" 
@@ -54,11 +89,17 @@ const ChooseGamePage = () => {
       </Container>
       
       <Container fluid="true" >  
-      <ChooseGameMode gameSelected={idSelectedGame} />
+      <ChooseGameMode gameSelected={idSelectedGame} handleSelectNumberPlayer={handleSelectNumberPlayer}/>
       </Container>
 
       <Container fluid="true" >  
-      <ChoosePlayerPage handleClickShowAllPlayers={handleClickShowAllPlayers} showAllPlayers={showAllPlayers}/>
+      <ChoosePlayerPage 
+            handleClickShowAllPlayers={handleClickShowAllPlayers} 
+            showAllPlayers={showAllPlayers} 
+            numberPlayers={numberPlayers}
+            handleSelectPlayers={handleSelectPlayers}
+            errorTable={errorTable}
+            />
       </Container>
     </>
   );

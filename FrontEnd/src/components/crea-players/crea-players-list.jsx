@@ -2,7 +2,7 @@ import { Table } from "react-bootstrap";
 import RowTablePlayer from "./rowTableplayer";
 
 
-const CreaPlayersList = ({ data }) => {
+const CreaPlayersList = ({ data, handleSelectPlayers }) => {
   console.log(data);
 
   return (
@@ -20,7 +20,7 @@ const CreaPlayersList = ({ data }) => {
         
         {data.map((player) => (
           
-          <RowTablePlayer key={player.player_id} player={player}/>
+          <RowTablePlayer key={player.player_id} player={player} handleSelectPlayers={handleSelectPlayers}/>
           
           ))}
       </tbody>

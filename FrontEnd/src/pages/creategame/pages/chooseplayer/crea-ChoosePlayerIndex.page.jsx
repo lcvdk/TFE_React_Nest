@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CreaPlayersList from "../../../../components/crea-players/crea-players-list";
 
-const ChoosePlayerIndexPage = () => {
+const ChoosePlayerIndexPage = (props) => {
   const [players, setPlayers] = useState([]);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const ChoosePlayerIndexPage = () => {
   return (
     <>
       <h1>this is my Players Index page</h1>
-      <CreaPlayersList data={players} />
+      <CreaPlayersList data={players} handleSelectPlayers={props.handleSelectPlayers} />
     </>
   );
 };
