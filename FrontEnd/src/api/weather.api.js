@@ -2,7 +2,7 @@ import axios from 'axios';
 
 
 export const weatherFetcher = (city) => {
-
+    //REACT_APP_WEATHER_KEY=0735a45b14b58e27f2fc9883c2a465ed
     const params = {
         q: city, units: 'metric', lang: 'fr', appid: process.env.REACT_APP_WEATHER_KEY
         

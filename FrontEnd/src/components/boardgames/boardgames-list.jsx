@@ -9,7 +9,7 @@ const BoardgamesList = ({ data, onSelectedBoardgame }) => {
           key={boardgame.boardgame_id}
           onClick={() => onSelectedBoardgame(boardgame.boardgame_id)}
         >
-          <Card.Text>
+          <Card.Text className="text-light">
             {boardgame.boardgame_title} {boardgame.boardgame_subtitle}
           </Card.Text>
         </Card>

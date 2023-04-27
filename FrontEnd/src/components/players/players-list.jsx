@@ -9,7 +9,7 @@ const PlayersList = ({ data, onSelectedPlayer }) => {
           key={player.player_id}
           onClick={() => onSelectedPlayer(player.player_id)}
         >
-          <Card.Text>{player.player_pseudo}</Card.Text>
+          <Card.Text className="text-light">{player.player_pseudo}</Card.Text>
         </Card>
       ))}
     </Container>

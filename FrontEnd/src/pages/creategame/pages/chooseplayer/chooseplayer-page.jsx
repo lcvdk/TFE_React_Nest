@@ -1,24 +1,21 @@
 import { Button, Card, Container } from "react-bootstrap";
-import ChoosePlayerIndexPage from "./crea-ChoosePlayerIndex.page";
 import { useState } from "react";
+// pages & composant
+import ChoosePlayerIndexPage from "./crea-ChoosePlayerIndex.page";
 import CreaNewPlayerForm from "./crea-newplayerform";
 
-
+ 
 const ChoosePlayerPage = (props) => {
 
   const [createPlayerForm, setCreatePlayerForm] = useState(false)
 
   
-  // numberPlayers={props.numberPlayers}
-
   const handlecreatePlayerForm = () => {
     setCreatePlayerForm(!createPlayerForm)
     
   }
 
-  // function NewArray(props.numberPlayers){
-
-  // }
+  
 
   return (
     <Container fluid="true">
@@ -26,9 +23,7 @@ const ChoosePlayerPage = (props) => {
         <Card.Title>Choose Player Page</Card.Title>
         
         <Container>
-          {
-            props.numberPlayers &&  "yo"
-          }
+          
         </Container>
         <Container>
           {props.showAllPlayers && <ChoosePlayerIndexPage 

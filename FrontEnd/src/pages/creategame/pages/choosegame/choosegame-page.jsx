@@ -1,8 +1,10 @@
 import { Button, Card, Container, Row } from "react-bootstrap";
+import { useState } from "react";
+
+// components & pages
+import CreaBoardGamesIndexPage from "./crea-boardgamesIndex.page";
 import ChooseGameMode from "../choosemode/choosemode.page";
 import ChoosePlayerPage from "../chooseplayer/chooseplayer-page";
-import { useState } from "react";
-import CreaBoardGamesIndexPage from "./crea-boardgamesIndex.page";
 
 
 
@@ -22,6 +24,9 @@ const ChooseGamePage = () => {
   const handleClickShowAllGames = () => {
       setShowAllGames(showAllGames => !showAllGames)
     }
+
+
+
   const handleTitleSelectedGame = (title, id) => {
     setTitleSelectedGame(title)
     setIdSelectedGame(id)
@@ -33,11 +38,14 @@ const ChooseGamePage = () => {
     setShowAllPlayers(showAllPlayers => !showAllPlayers)
   }
   
+  // from GameMode page 
   const handleSelectNumberPlayer = (value) => {
     console.log("value players " + value)
     setNumberPlayers(numberPlayers => value)
   }
 
+
+  // choose player page
   const handleSelectPlayers = (playerId,playerPseudo) => {
     
     if (playerArray.length <= numberPlayers){
@@ -65,8 +73,7 @@ const ChooseGamePage = () => {
       setErrorTable(true)
     } 
     
-    // let result = playerArray.map(({playerPseudo}) => playerPseudo)
-    // console.log("my array : " + result)
+    
     console.log(playerArray)
     
   }
@@ -81,7 +88,7 @@ const ChooseGamePage = () => {
     <>
       <Container fluid="true" >
         <Card className="m-1 p-3 d-flex" style={{justifyContent: "center"}}>
-          <Card.Title>Choose Your Game</Card.Title>
+          <Card.Title className="text-info">Choose Your Game</Card.Title>
           <Card.Subtitle className="text-success"><h2>{titleSelectedGame}</h2></Card.Subtitle>
           <Container className="pt-3">
             {numberPlayers && `Number of players: ${numberPlayers}` }

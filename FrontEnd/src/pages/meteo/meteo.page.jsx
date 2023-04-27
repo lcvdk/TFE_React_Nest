@@ -6,7 +6,7 @@ const MeteoPage = () => {
     <>
       <Container>
         <Card className="p-2 mt-4 text-center">
-          <Card.Header>Météo</Card.Header> 
+          <h3 className="text-info">Météo</h3> 
         <WeatherApp />
         </Card>
       </Container>

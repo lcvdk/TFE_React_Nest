@@ -17,12 +17,8 @@ const PlayerDetailPage = () => {
     .then((res) => {  // response
       setPlayer(res.data) // setGames change games avec les datas de la response
     })
- },[])
+  },[])
   
-  
-    
-
-
 return(
   <>
         <PlayerDetail  {...player}/>

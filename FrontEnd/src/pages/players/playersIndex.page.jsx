@@ -23,7 +23,6 @@ const PlayerIndexPage = () => {
 
 return(
   <>
-    <h4>this is the Players Index Page</h4>
     <PlayersList data={players} onSelectedPlayer={handleSelectedPlayer}/>
   </>
 )

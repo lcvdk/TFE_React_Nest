@@ -23,7 +23,6 @@ const BoardGamesIndexPage = () =>{
 
     return (
       <>
-          <h4>This is the Boardgames Index Page</h4>
           <BoardgamesList data={boardgames} onSelectedBoardgame={handleSelectedBoardgame} />
       </>
     )

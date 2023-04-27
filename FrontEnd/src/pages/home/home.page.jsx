@@ -13,7 +13,7 @@ const HomePage = () => {
       <Container className="pt-5">
         <Card className="p-3  m-2 text-center text-white">
           <Card.Title>Bienvenue sur Board Game Tournament!</Card.Title>
-          <Card.Text>This is the Home Page</Card.Text>
+          <Card.Text></Card.Text>
                     
           <Button
             type="button"
