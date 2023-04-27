@@ -24,14 +24,20 @@ const ChoosePlayerPage = (props) => {
     <Container fluid="true">
       <Card className="m-1 p-3 d-flex" style={{ justifyContent: "center" }}>
         <Card.Title>Choose Player Page</Card.Title>
-        <Card.Subtitle>this is the choose your PLAYER Page</Card.Subtitle>
+        
         <Container>
           {
             props.numberPlayers &&  "yo"
           }
         </Container>
         <Container>
-          {props.showAllPlayers && <ChoosePlayerIndexPage handleSelectPlayers={props.handleSelectPlayers} />}
+          {props.showAllPlayers && <ChoosePlayerIndexPage 
+                    handleSelectPlayers={props.handleSelectPlayers} 
+                    errorTable={props.errorTable} 
+                    handleDeSelectPlayers={props.handleDeSelectPlayers}
+                    numberPlayers={props.numberPlayers}
+                    arrayLength={props.arrayLength}  
+                    />}
           {createPlayerForm && <CreaNewPlayerForm/>}
           <Button
             type="submit"
@@ -40,11 +46,11 @@ const ChoosePlayerPage = (props) => {
           >
             {!props.showAllPlayers? "Show all Players" : "Hide all Players"}
           </Button>
-          {props.showAllPlayers && 
-            <Button className="btn-warning btn-sm mt-3" 
-              onClick={handlecreatePlayerForm}
-              > {!createPlayerForm? "create player" : "Hide create player"}
-            </Button>}
+            {props.showAllPlayers && 
+                <Button className="btn-warning btn-sm mt-3" 
+                  onClick={handlecreatePlayerForm}
+                  > {!createPlayerForm? "create player" : "Hide create player"}
+                </Button>}
         </Container>
       </Card>
     </Container>

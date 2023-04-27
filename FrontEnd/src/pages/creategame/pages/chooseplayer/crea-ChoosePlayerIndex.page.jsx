@@ -15,8 +15,14 @@ const ChoosePlayerIndexPage = (props) => {
     
   return (
     <>
-      <h1>this is my Players Index page</h1>
-      <CreaPlayersList data={players} handleSelectPlayers={props.handleSelectPlayers} />
+          <CreaPlayersList 
+          data={players} 
+          handleSelectPlayers={props.handleSelectPlayers}
+          handleDeSelectPlayers={props.handleDeSelectPlayers} 
+          errorTable={props.errorTable} 
+          numberPlayers={props.numberPlayers}
+          arrayLength={props.arrayLength}  
+          />
     </>
   );
 };

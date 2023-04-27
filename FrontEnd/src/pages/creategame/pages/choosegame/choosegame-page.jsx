@@ -14,8 +14,9 @@ const ChooseGamePage = () => {
   const [idSelectedGame, setIdSelectedGame] = useState(null)
   const [numberPlayers, setNumberPlayers] = useState(null)
   const [errorTable, setErrorTable] = useState(false)
+  const [arrayLength, setArrayLength] = useState(0)
  
-  const playerArray = []
+  let playerArray = []
   
   
   const handleClickShowAllGames = () => {
@@ -39,15 +40,24 @@ const ChooseGamePage = () => {
 
   const handleSelectPlayers = (playerId,playerPseudo) => {
     
-    if (playerArray.length < numberPlayers){
+    if (playerArray.length <= numberPlayers){
+      console.log("playerId >>>" + playerId)
       
-      if (playerArray.includes(playerPseudo)) {
-        setErrorTable(true)
+      
+
+      if (playerArray.find((player) => player.playerId === playerId) ) {
+        console.log(`player id ${playerId} found ! `)
+        playerArray = playerArray.filter(player => player.playerId != playerId)
+        setArrayLength(playerArray.length)
+        // playerArray.slice(Index)
+        
+        
       }
       
       else {
-        playerArray.push(playerPseudo)
+        playerArray.push({playerId,playerPseudo})
         console.log(`${playerPseudo} est validé`)
+        setArrayLength(playerArray.length)
       }
       
     }
@@ -55,9 +65,16 @@ const ChooseGamePage = () => {
       setErrorTable(true)
     } 
     
+    // let result = playerArray.map(({playerPseudo}) => playerPseudo)
+    // console.log("my array : " + result)
     console.log(playerArray)
-
+    
   }
+
+  const handleDeSelectPlayers = (playerId,playerPseudo) => {
+    console.log(`Deselect player ${playerPseudo}`)
+  }
+
 
 
   return (
@@ -98,8 +115,13 @@ const ChooseGamePage = () => {
             showAllPlayers={showAllPlayers} 
             numberPlayers={numberPlayers}
             handleSelectPlayers={handleSelectPlayers}
+            handleDeSelectPlayers={handleDeSelectPlayers}
             errorTable={errorTable}
+            arrayLength={arrayLength}
             />
+      </Container>
+      <Container>
+
       </Container>
     </>
   );
